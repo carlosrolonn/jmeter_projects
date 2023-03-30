@@ -1,0 +1,39 @@
+Thread Group (Configuración de tiempos y cantidad de peticiones)
+
+Número de hilos = la cantidad ejecuciones para cada HTTP Request (cantidad de datos desde archivo importado si es que se utiliza)
+Periodo de subida (en segundos) = tiempo que tarda en realizar las ejecuciones por cada HTTP Request definidas en número de hilos
+Contador del bucle = cantidad de veces que se va a repetir la ejecución
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Temporizador constante (en milisegundos) = tiempo de pausa para ejecutarse nuevamente el número de hilos luego de completarse
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Ejemplo 1:
+
+- Se van a ejecutar 10 números de hilos en 1 segundo por cada HTTP Request activa y en bucle 5 veces. Cuando termine toda la ejecución esperará 3 segundos entre cada bucle para volver a ejecutarse.
+
+Configuración para el ejemplo 1:
+
+Número de hilos = 10
+Periodo de subida (en segundos) = 1
+Contador del bucle = 5
+
+Temporizador constante (en milisegundos)= 3000
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Ejemplo 2:
+
+- Se va a ejecutar 1 número de hilo en 1 segundo por cada HTTP Request activa y en bucle 50 veces. Cuando termine toda la ejecución esperará 2 segundos entre cada bucle para volver a ejecutarse.
+
+Configuración para el ejemplo 2:
+
+Número de hilos = 1
+Periodo de subida (en segundos) = 1
+Contador del bucle = 50
+
+Temporizador constante (en milisegundos)= 2000
+
+--------------------------------------------------------------------------------------------------------------------------------------

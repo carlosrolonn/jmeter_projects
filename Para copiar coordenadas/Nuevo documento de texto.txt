@@ -1,0 +1,3 @@
+Luego de tener los textos copiados, seleccionar todos, click derecho y merge selected clips
+Luego seleccionar la opción /n
+copiar todos y listo

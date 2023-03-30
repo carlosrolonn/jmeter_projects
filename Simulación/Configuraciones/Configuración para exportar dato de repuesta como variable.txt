@@ -1,0 +1,57 @@
+1- En el HTTP Request agregar BeanShell PostProcessor
+2- Copiar el siguiente Script:
+
+Para exportar 1 variable de la respuesta:
+
+import org.apache.jmeter.services.FileServer;
+
+String path=FileServer.getFileServer().getBaseDir();
+
+var1= vars.get("attendance");
+
+f = new FileOutputStream("C://Users/Carlos Rolon/Desktop/JMETER PROJECTS/Simulación/Data/driver_attendance.txt",true);
+p = new PrintStream(f);
+
+this.interpreter.setOut(p);
+p.println(var1);
+
+f.close();
+
+------------------------------------------------------------------------------------------------------------------------
+
+Para exportar 2 variables de la respuesta:
+
+import org.apache.jmeter.services.FileServer;
+
+String path=FileServer.getFileServer().getBaseDir();
+
+var1= vars.get("token");      
+var2= vars.get("attendance");
+
+f = new FileOutputStream("C://Users/Carlos Rolon/Desktop/JMETER PROJECTS/Simulación/Data/driver_attendance.txt",true);
+p = new PrintStream(f); 
+
+this.interpreter.setOut(p); 
+p.println(var1+"," +var2);
+
+f.close();
+
+-----------------------------------------------------------------------------------------------------------------------
+
+3- Para más de 2 variables solo se hacen dos modificaciones. Se agrega una o más filas para extraer las variables,
+Ejemplo: 
+var3= vars.get("nombredevariable");
+
+Y se agrega la o las variables de forma concatenada en la línea: 
+
+p.println(var1+"," +var2); ó p.println(var1+"," +var2+"," +var3);
+
+-----------------------------------------------------------------------------------------------------------------------
+
+4- Editar la dirección dónde se va a guardar el archivo que puede ser csv o txt.
+Ejemplo:
+"C://Users/Carlos Rolon/Desktop/JMETER PROJECTS/Simulación/Data/driver_attendance.txt",true
+
+5- El nombre de la o las variables deben ser iguales a las que se extraigan con JSON Extractor, para que sepa que dato de la respuesta guardar
+
+6- Pasar el archivo al HTTP Request que necesite esa variable igual como se pasan las coordenadas CSV Data Set Configuration

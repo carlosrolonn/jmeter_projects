@@ -1,0 +1,3 @@
+Para ejecutar infinitamente: configurar dentro de cada request utilizado, el CSV Data Set Config de la siguiente manera:
+¿Reciclar en el fin de fichero (EOF)? = TRUE
+¿Para el hilo al final de fichero (EOF)? = FALSE

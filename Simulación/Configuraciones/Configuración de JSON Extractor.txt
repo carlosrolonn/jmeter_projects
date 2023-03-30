@@ -1,0 +1,62 @@
+1- Agregar esta propiedad al HTTP Request que se necesite para guardar un dato de la respuesta
+2- Darle un nombre a la variable. Si se van a capturar más de una variable separar por ;
+3- Capturar la variable de la respuesta. Ejecutar el endpoint para ver la respuesta y utilizar beauty json de ser necesario para mejor interpretación.
+
+Ejemplo:
+
+Esto va en el campo JSON Path expressions.
+
+Para capturar "_id" y el "date" de esta respuesta hay que contar en qué nivel de llave "{}" está. En este caso "_id" está dentro del segundo nivel de llave y "date" dentro del tercer nivel de llave, entonces se captura de la siguiente manera:
+
+Para capturar "_id": se coloca primero el simbolo de dolar y seguido se agregan puntos según en qué nivel de llave esté la variable, para este caso está en el nivel 2, entonces se agregan 2 puntos y seguido se pone el nombre del atributo del que queremos guardar el valor, _id para este ejemplo.
+
+$.._id
+
+Para capturar "date": En este caso está en el nivel 3, entonces se agregan 3 puntos y seguido se pone el nombre del atributo del que queremos guardar el valor, date para este ejemplo.
+
+$...date
+
+
+{
+  "data": {
+    "amount_order_delivered": 0,
+    "_id": "62cc81e85c6b1e0009edc118",
+    "driverZoneDate_id": "62c3b7588dd23100094f259c",
+    "driver_id": "621fbc779ea90e00091fcffa",
+    "entry_time": {
+      "date": "2022-07-11T16:02:48.879Z",
+      "tracking_id": "62cc81e85c6b1e0009edc104"
+    },
+    "createdAt": "2022-07-11T20:02:48.880Z",
+    "updatedAt": "2022-07-11T20:02:48.880Z",
+    "__v": 0
+  },
+  "message": "Driver Available",
+  "success": true
+}
+
+4- En Match No.: Colocar el número del objeto donde se encuentra la respuesta que nos interesa si ese nivel de llave responde con varios objetos. En este caso solo tienen un objeto por llave, se puede colocar 1. 0 para elegir uno aleatorio.
+
+Ejemplo de respuesta con varios objetos:
+
+{
+    "data": {
+        "configurations": [
+            {
+                "clave": "app.splash.lottie.speed",
+                "value": "2500",
+                "enabled": true
+            },
+            {
+                "clave": "app.android.version",
+                "value": "4.0.22",
+                "enabled": true
+            },
+            {
+                "clave": "app.background.tiendas",
+                "value": "Tienda_202011201441.jpg",
+                "enabled": true
+            },
+    "message": "Datos recuperados con éxito.",
+    "success": true
+}

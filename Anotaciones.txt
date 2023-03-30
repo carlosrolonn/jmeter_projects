@@ -1,0 +1,32 @@
+1. Crear un nuevo plan de pruebas
+2. Sobre el plan de pruebas añadir grupo de hilos. (Desde aquí se puede configurar la cantidad de peticiones-usuarios se simularán y que hacer luego de encontrar un error)
+	El ramp-up es la cantidad de segundos que tardarán los usuarios designados en conectarse o realizar los procesos de prueba.
+3. Sobre el plan de pruebas añadir elemento no de prueba, Servidor Proxy HTTP
+4. Configurar el Proxy del navegador como localhost y el puerto que se tiene en Servidor Proxy HTTP de JMeter
+5. Sobre el servidor Proxy HTTP, seleccionar el controlador objetivo = plan de pruebas actual
+6. Ya se puede iniciar las pruebas
+7. Sobre el grupo de hilo añadir receptores: ver arbol de resultados, informe agregado
+8. Se puede agregar temporizadores:
+	- Constante: Añadir desde el grupo de hilo(Es configurable el retardo en milisegundos) - Se puede poner por encima
+	de los pasos para afectar a todos o dentro de uno especifico
+	- Aleatorio Uniforme: Es configurable el rango en milisegundos para el retardo aleatorio
+9. Se puede añadir aserciones:
+
+	- Aserción de Respuesta: Configurable por Campo de Respuesta a Probar. Ej. Para Respuesta textual, añadir una respuesta esperada
+	del sistema en formato texto "Gracias por su compra" 
+	- Aserción de Duración: Configurable en milisegundos para dar limite de respuesta a la acción realizada
+10. Parametrizar: Se puede parametrizar cuando la prueba requiere ingresar datos, y pasarle datos diferentes en cada test.
+Se posiciona sobre la paso necesario y añadir Elemento de Configuracion, Configuración del CSV Data Set
+Para utilizar se necesita un archivo de texto con los parametros que debe estar alojado en el directorio del JMeter "C:\apache-jmeter-5.3\apache-jmeter-5.3\bin".
+Si se quiere utilizar solo el nombre del archivo. Caso contrario puede alojarse en cualquier lugar utilizando la ruta de la carpeta.
+
+	Por ejemplo: Para una prueba de completar un formulario, se puede preparar un archivo de texto con los datos que se utilizaran (Nombre, Nro de tarjeta) separados por comas.
+	Jose Baez, 45214562199784
+	Ramon Trivago, 98423132184
+	Luis Gimenez, 3339495656546
+	OBS: La cantidad de datos debe coincidir con el numero de usuarios configurados en el grupo de hilo.
+
+Luego en la configuración, en el campo de "Nombre de Variable", escribir los nombres que se le darán a esas variables, separados por comas.
+Dirigirse al item de la prueba y en los datos que interesan borrar los datos que se capturaron y escribir el nombre de la variable que corresponda con el siguiente formato: ${nombre}
+
+Se puede agregar receptores del plugin. Añadir en el grupo de hilo, receptores, Active Threads Over Time o Response Times Over Time
